@@ -1,0 +1,53 @@
+D682 Task2 Report including Parts C2 thru D
+Rbrune15
+
+Part C2: Comparison of Model Performance (Before vs. After Optimization)
+
+The performance of the optimized models was compared against the baseline Random Forest model developed in Task 1 using RMSE and MAPE. The baseline model achieved an RMSE of 0.2696 and a MAPE of 2.09%. After applying optimization, regularization, and ensemble learning techniques, performance varied across models. The ExtraTrees ensemble achieved the best overall performance, with the lowest RMSE (0.2587) and MAPE (2.06%), indicating improved predictive accuracy and generalization compared to the baseline model. Gradient Boosting produced comparable but slightly weaker results, while the regularized Random Forest showed a modest increase in error, suggesting that the regularization parameters slightly constrained model flexibility. Hyperparameter tuning using RandomizedSearchCV and GridSearchCV did not improve performance beyond the baseline, indicating that the original Random Forest configuration was already well suited for the dataset.
+
+Part D1:
+
+Two hyperparameter optimization techniques were selected to improve the performance of the Random Forest model. RandomizedSearchCV was chosen because it efficiently explores a wide range of hyperparameter combinations without requiring exhaustive evaluation of every possible configuration (scikit-learn, n.d.). This makes it well suited for identifying strong parameter settings within a reasonable computational cost.
+
+GridSearchCV was then applied as a refinement step to evaluate a smaller, targeted set of hyperparameters around the best-performing configuration identified by RandomizedSearchCV. Using both techniques together allows for a balance between exploration and precision, improving the likelihood of identifying an effective model configuration (scikit-learn, n.d.).
+
+Part D2:
+
+Two regularization methods were applied to reduce overfitting and improve model generalization. Limiting the maximum tree depth using the max_depth parameter prevents individual decision trees from becoming overly complex and memorizing noise in the training data.
+
+Increasing the min_samples_leaf parameter ensures that each leaf node represents a sufficient number of training samples, which reduces sensitivity to outliers and stabilizes predictions. Together, these regularization techniques help the model learn general patterns in environmental data rather than fitting to isolated or extreme cases (scikit-learn, n.d.; GeeksforGeeks, n.d.).
+
+Part D3: 
+
+Two ensemble learning techniques were selected to evaluate alternative strategies for improving predictive performance. ExtraTreesRegressor was chosen because it introduces additional randomness during tree construction, which often reduces variance and improves generalization in noisy datasets such as environmental and air quality data (scikit-learn, n.d.).
+
+GradientBoostingRegressor was chosen to represent a boosting-based ensemble approach. Unlike bagging methods, gradient boosting builds models sequentially, with each new model focusing on correcting errors from previous models. This approach can improve accuracy when complex relationships exist between input variables and the target outcome.
+
+Part D4:
+
+I selected root Mean Squared Error (RMSE) and Mean Absolute Percentage Error (MAPE) to evaluate model performance because they provide complementary insights into prediction accuracy. RMSE emphasizes larger prediction errors, making it useful for identifying models that occasionally produce large deviations from actual values.
+
+MAPE expresses error as a percentage, which allows for easier interpretation of model performance in practical terms. Using both metrics provides a more comprehensive evaluation of regression performance than relying on a single measure.
+
+Part D5:
+
+The model performance was compared before and after optimization using RMSE and MAPE to ensure a consistent evaluation. The baseline Random Forest model achieved strong performance, and further optimization through hyperparameter tuning produced comparable but not improved results. This indicated that the original configuration was already well suited for the dataset.
+
+Among the ensemble techniques I evaluated, the ExtraTrees model achieved the best overall performance, demonstrating improved generalization and lower error compared to the baseline model. This suggests that increased randomness during tree construction can be beneficial when modeling noisy or messy data. From a business and public health standpoint, improved prediction reliability supports better decision making, earlier identification of high risk conditions, and more effective allocation of resources in urban environments.
+
+
+
+
+Sources: 
+
+GeeksforGeeks. (n.d.). The effects of the depth and number of trees in a Random Forest. https://www.geeksforgeeks.org/machine-learning/the-effects-of-the-depth-and-number-of-trees-in-a-random-forest/
+
+GeeksforGeeks. (n.d.). Gradient Boosting (ML Gradient Boosting). https://www.geeksforgeeks.org/machine-learning/ml-gradient-boosting/
+
+scikit-learn. (n.d.). RandomizedSearchCV. https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html
+
+scikit-learn. (n.d.). GridSearchCV. https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html
+
+scikit-learn. (n.d.). ExtraTreesRegressor. https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesRegressor.html
+
+scikit-learn. (n.d.). GradientBoostingRegressor. https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html
